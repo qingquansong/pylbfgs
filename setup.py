@@ -37,11 +37,11 @@ else:
 def readme():
     with open('README.rst') as f:
         return f.read()
-    
+
 setup(
     name="PyLBFGS",
     url='https://github.com/dedupeio/pylbfgs',
-    version="0.2.0.9",
+    version="0.2.0.10",
     description="LBFGS and OWL-QN optimization algorithms",
     author="Lars Buitinck, Forest Gregg",
     author_email="fgregg@gmail.com",
