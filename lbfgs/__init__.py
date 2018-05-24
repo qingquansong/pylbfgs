@@ -4,6 +4,7 @@ LBFGS and OWL-QN optimization algorithms
 Python wrapper around liblbfgs.
 """
 
+import warnings
 from ._lowlevel import LBFGS, LBFGSError
 
 
@@ -21,6 +22,7 @@ def fmin_lbfgs(f, x0, progress=None, args=(), orthantwise_c=0,
         Called with the current position x (a numpy.ndarray), a gradient
         vector g (a numpy.ndarray) to be filled in and *args.
         Must return the value at x and set the gradient vector g.
+
     x0 : array-like
         Initial values. A copy of this array is made prior to optimization.
 
@@ -47,7 +49,10 @@ def fmin_lbfgs(f, x0, progress=None, args=(), orthantwise_c=0,
         zero, the library modifies function and gradient evaluations from
         a client program suitably; a client program thus have only to return
         the function value F(x) and gradients G(x) as usual. The default value
-        is zero.
+        is zero. 
+        
+        If orthantwise_c is set, then line_search cannot be the default
+        and must be one of 'armijo', 'wolfe', or 'strongwolfe'.
 
     orthantwise_start: int, optional (default=0)
         Start index for computing L1 norm of the variables.
@@ -168,6 +173,14 @@ def fmin_lbfgs(f, x0, progress=None, args=(), orthantwise_c=0,
 
 
     """
+
+    # Some input validation to make sure defaults with OWL-QN are adapted correctly
+    assert orthantwise_c >= 0, "Orthantwise_c cannot be negative"
+
+    if orthantwise_c > 0 and line_search != 'wolfe':
+        line_search = 'wolfe'
+        warnings.warn("When using OWL-QN, 'wolfe' is the only valid line_search. line_search has been set to 'wolfe'.")
+
     opt = LBFGS()
     opt.orthantwise_c = orthantwise_c
     opt.orthantwise_start = orthantwise_start

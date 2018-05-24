@@ -10,8 +10,55 @@ def test_fmin_lbfgs():
         g[0] = 2 * x
         return x ** 2
 
-    xmin = fmin_lbfgs(f, 100.)
+    xmin = fmin_lbfgs(f, 100., line_search='armijo')
     assert_array_equal(xmin, [0])
+
+    xmin = fmin_lbfgs(f, 100., line_search='strongwolfe')
+    assert_array_equal(xmin, [0])
+
+class TestOWLQN:
+
+    def test_owl_qn(self):
+        def f(x, g, *args):
+            g[0] = 2 * x
+            return x ** 2
+
+        xmin = fmin_lbfgs(f, 100., orthantwise_c=1, line_search='wolfe')
+        assert_array_equal(xmin, [0])
+
+    def test_owl_line_search_default(self):
+        def f(x, g, *args):
+            g[0] = 2 * x
+            return x ** 2
+
+        with pytest.warns(UserWarning, match="OWL-QN"):
+            xmin = fmin_lbfgs(f, 100., orthantwise_c=1)
+    
+    def test_owl_line_search_warning_explicit(self):
+        def f(x, g, *args):
+            g[0] = 2 * x
+            return x ** 2
+
+        with pytest.warns(UserWarning, match="OWL-QN"):
+            xmin = fmin_lbfgs(f, 100., orthantwise_c=1, line_search='default')
+        with pytest.warns(UserWarning, match="OWL-QN"):            
+            xmin = fmin_lbfgs(f, 100., orthantwise_c=1, line_search='morethuente')
+        with pytest.warns(UserWarning, match="OWL-QN"):   
+            xmin = fmin_lbfgs(f, 100., orthantwise_c=1, line_search='armijo')
+        with pytest.warns(UserWarning, match="OWL-QN"):        
+            xmin = fmin_lbfgs(f, 100., orthantwise_c=1, line_search='strongwolfe')
+
+    @pytest.mark.xfail(strict=True)
+    def test_owl_wolfe_no_warning(self):
+        """ This test is an attempt to show that wolfe throws no warnings.
+        """
+
+        def f(x, g, *args):
+            g[0] = 2 * x
+            return x ** 2
+
+        with pytest.warns(UserWarning, match="OWL-QN"):
+            xmin = fmin_lbfgs(f, 100., orthantwise_c=1, line_search='wolfe')
 
 
 def test_2d():
