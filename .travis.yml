@@ -10,9 +10,11 @@ notifications:
 language: python
 matrix:
   include:
+  - python: 3.7
   - python: 3.6
   - python: 3.5
   - python: 2.7
+
   - os: osx
     language: generic
     before_install:
