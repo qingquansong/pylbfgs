@@ -12,6 +12,8 @@ This package aims to provide a cleaner interface to the LBFGS
 algorithm than is currently available in SciPy_, and to provide the
 OWL-QN algorithm to Python users.
 
+Part of the Dedupe.io_ cloud service and open source toolset for de-duplicating and finding fuzzy matches in your data.
+
 
 Installing
 ==========
@@ -39,6 +41,7 @@ PyLBFGS was written by Lars Buitinck.
 
 Alexis Mignon submitted a patch for error handling.
 
+.. _Dedupe.io: https://dedupe.io/
 
 .. _Cython: http://cython.org/
 
