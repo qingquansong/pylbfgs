@@ -39,12 +39,12 @@ def readme():
         return f.read()
 
 setup(
-    name="PyLBFGS",
-    url='https://github.com/dedupeio/pylbfgs',
+    name="PyLBFGS-mirror",
+    url='https://github.com/qingquansong/pylbfgs',
     version="0.2.0.13",
     description="LBFGS and OWL-QN optimization algorithms",
-    author="Lars Buitinck, Forest Gregg",
-    author_email="fgregg@gmail.com",
+    author="Lars Buitinck, Forest Gregg, Qingquan Song",
+    author_email="ustcsqq@gmail.com",
     packages=['lbfgs'],
     install_requires=['numpy>=1.13.1'],
     ext_modules=ext_modules,

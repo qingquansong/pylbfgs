@@ -5,7 +5,9 @@ PyLBFGS
     :target: https://travis-ci.org/dedupeio/pylbfgs
 
 
-This is a Python wrapper around Naoaki Okazaki (chokkan)'s liblbfgs_ library
+[This is a mirrored package for PyLBFGS pacakge authored by Lars Buitinck, Forest Gregg at (https://github.com/dedupeio/pylbfgs.git) in order to make flexible local changes.]
+
+The original package is a Python wrapper around Naoaki Okazaki (chokkan)'s liblbfgs_ library
 of quasi-Newton optimization routines (limited memory BFGS and OWL-QN).
 
 This package aims to provide a cleaner interface to the LBFGS
