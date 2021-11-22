@@ -1,8 +1,8 @@
 PyLBFGS
 =======
 
-.. image:: https://travis-ci.org/dedupeio/pylbfgs.svg?branch=master
-    :target: https://travis-ci.org/dedupeio/pylbfgs
+.. image:: https://travis-ci.org/qingquansong/pylbfgs.svg?branch=master
+    :target: https://travis-ci.org/dqingquansong/pylbfgs
 
 
 [This is a mirrored package for PyLBFGS pacakge authored by Lars Buitinck, Forest Gregg at (https://github.com/dedupeio/pylbfgs.git) in order to make flexible local changes.]
@@ -21,7 +21,7 @@ Installing
 ==========
 Type::
 
-    pip install pylbfgs
+    pip install pylbfgs-mirror
 
 
 Hacking
