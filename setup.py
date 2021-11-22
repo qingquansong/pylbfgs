@@ -41,7 +41,7 @@ def readme():
 setup(
     name="PyLBFGS-mirror",
     url='https://github.com/qingquansong/pylbfgs',
-    version="0.2.0.13",
+    version="0.2.0.14",
     description="LBFGS and OWL-QN optimization algorithms",
     author="Lars Buitinck, Forest Gregg, Qingquan Song",
     author_email="ustcsqq@gmail.com",
